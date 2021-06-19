@@ -2,6 +2,8 @@ package subtask3
 
 import java.lang.IllegalArgumentException
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import kotlin.reflect.KClass
 
 class Blocks {
@@ -25,15 +27,23 @@ class Blocks {
     }
 
     private fun lastDateOfDates(blockA: Array<*>): Any {
-        var nowDate = LocalDate.now()
+        val nowDate = LocalDate.now()
+        var findDate = LocalDate.now()
+        var prevDateFirstDate = 0L
+        var nextDate = 0L
         for (obj in blockA) {
             if (obj is LocalDate) {
-                if () {
-                    //TODO DateFinder
+                if (prevDateFirstDate == 0L) {
+                    prevDateFirstDate = ChronoUnit.DAYS.between(obj, nowDate)
+                }
+                nextDate = ChronoUnit.DAYS.between(obj, nowDate)
+                if (nextDate <= prevDateFirstDate) {
+                    findDate = obj
                 }
             }
         }
-        return
+        val format: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        return findDate.format(format)
     }
 
     private fun contString(blockA: Array<*>): Any {
