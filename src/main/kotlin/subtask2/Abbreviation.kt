@@ -7,7 +7,6 @@ class Abbreviation {
         private const val NO = "NO"
     }
 
-    // TODO: Complete the following function
     fun abbreviationFromA(a: String, b: String): String {
         val aUpper = a.toUpperCase()
         return search(aUpper, b)

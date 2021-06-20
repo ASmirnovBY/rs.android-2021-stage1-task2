@@ -14,7 +14,6 @@ class Blocks {
         private val DATE_CLASS = LocalDate::class
     }
 
-    // TODO: Complete the following function
     fun getData(blockA: Array<*>, blockB: KClass<*>): Any {
         if(blockA.isEmpty()) throw IllegalAccessError("No date in blockA")
 
